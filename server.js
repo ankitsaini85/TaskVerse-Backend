@@ -11,16 +11,18 @@ const cors=require('cors');
 const app = express();
 connectDB();
 
-app.use(cors({
-    origin: [
-        'https://task-verse-e0wpoiksf-ankit-sainis-projects-b6e2b568.vercel.app',
-        'https://taskverse-backend.onrender.com',
-        'http://localhost:3000'
-    ],
-     credentials: true, // Optional: if using cookies or authorization headers
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://task-verse-e0wpoiksf-ankit-sainis-projects-b6e2b568.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json());
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
