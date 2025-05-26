@@ -12,10 +12,17 @@ const app = express();
 connectDB();
 
 const corsOptions = {
-  origin: [
-    'http://localhost:3000',
-    'https://task-verse-e0wpoiksf-ankit-sainis-projects-b6e2b568.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'https://task-verse-e0wpoiksf-ankit-sainis-projects-b6e2b568.vercel.app'
+    ];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
