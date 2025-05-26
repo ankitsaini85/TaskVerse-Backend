@@ -16,7 +16,10 @@ app.use(cors({
         'https://task-verse-e0wpoiksf-ankit-sainis-projects-b6e2b568.vercel.app',
         'https://taskverse-backend.onrender.com',
         'http://localhost:3000'
-    ]
+    ],
+     credentials: true, // Optional: if using cookies or authorization headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 // app.use(bodyParser.json());
