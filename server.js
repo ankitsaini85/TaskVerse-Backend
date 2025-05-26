@@ -12,7 +12,8 @@ const app = express();
 connectDB();
 
 app.use(cors({
-    origin: 'http://localhost:3000' 
+    origin:'https://task-verse-e0wpoiksf-ankit-sainis-projects-b6e2b568.vercel.app'
+    
   }));
 app.use(express.json());
 app.use(bodyParser.json());
