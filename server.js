@@ -12,12 +12,15 @@ const app = express();
 connectDB();
 
 app.use(cors({
-    origin:'https://task-verse-e0wpoiksf-ankit-sainis-projects-b6e2b568.vercel.app'
-    
-  }));
+    origin: [
+        'https://task-verse-e0wpoiksf-ankit-sainis-projects-b6e2b568.vercel.app',
+        'https://taskverse-backend.onrender.com',
+        'http://localhost:3000'
+    ]
+}));
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.send('API is running'));
 app.use('/api', authRoutes);
 app.use('/api', teamRoutes);
